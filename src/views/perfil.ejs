@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body style="background-image: url(https://static.vecteezy.com/system/resources/previews/000/122/923/original/jungle-landscape-with-liana-hanging-vector.jpg); background-repeat: no-repeat; background-size: cover;">
+  <div class="container" style="background-image:url(https://thumbs.dreamstime.com/b/papel-viejo-del-grunge-para-el-mapa-o-el-vintage-del-tesoro-45116915.jpg);">    
+    <h1 class="text-center display-1" style="color:darkgreen; font-family: Arial, Helvetica, sans-serif;">Zoológico</h1>
+      <hr>
+      <a href="/logout">Salir</a>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active h2" href="#"><p class="font-weight-bold" style="color:darkgreen;">Inicio</p></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link h2" href="/perfil"><p class="font-weight-bold" style="color:darkgreen;">Información Personal</p></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link h2" href="/animales_perfil"><p class="font-weight-bold" style="color:darkgreen;">Animales</p></a>
+        </li>
+      </ul>
+      <div class="container">
+      <div class='row'>
+          <div class='col-md-4 mt-4 text-center'>
+              <table class="table table-borderless">
+                  <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellido</th>
+                      <th scope="col">Correo</th>
+                      <th scope="col">Télefono</th>
+                  </tr>
+                  </thead>
+                  <% for(var i = 0; i < datos.length; i++){ %>
+                      <tr>
+                          <td><%= datos[i].id_empleado %></td>
+                          <td><%= datos[i].nombre_empleado %></td>
+                          <td><%= datos[i].apellido_empleado %></td>
+                          <td><%= datos[i].email_empleado %></td>
+                          <td><%= datos[i].telefono_empleado %></td>
+                      </tr> 
+                  <% } %>
+              </table>
+          </div>
+      </div>
+      </div>
+  </div>
+</body>
+</html>

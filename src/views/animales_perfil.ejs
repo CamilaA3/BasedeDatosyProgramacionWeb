@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        #myInput {
+          background-image: url("");
+          background-position: 10px 10px;
+          background-repeat: no-repeat;
+          width: 100%;
+          font-size: 16px;
+          padding: 12px 20px 12px 40px;
+          border: 1px solid #ddd;
+          margin-bottom: 12px;
+        }
+        
+        #myTable {
+          border-collapse: collapse;
+          width: 100%;
+          border: 1px solid #ddd;
+          font-size: 18px;
+        }
+        
+        #myTable th, #myTable td {
+          text-align: left;
+          padding: 12px;
+        }
+        
+        #myTable tr {
+          border-bottom: 1px solid #ddd;
+        }
+        
+        #myTable tr.header, #myTable tr:hover {
+          background-color: #f1f1f1;
+        }
+    </style>
+        <script>
+          function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[1];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }       
+            }
+          }
+      </script>
+</head>
+<body style="background-image: url(https://static.vecteezy.com/system/resources/previews/000/122/923/original/jungle-landscape-with-liana-hanging-vector.jpg); background-repeat: no-repeat; background-size: cover;">
+   <div class="container" style="background-image:url(https://thumbs.dreamstime.com/b/papel-viejo-del-grunge-para-el-mapa-o-el-vintage-del-tesoro-45116915.jpg);">
+    <h1 class="text-center display-1" style="color:darkgreen; font-family: Arial, Helvetica, sans-serif;">Zoológico</h1>
+    <hr>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active h2" href="#"><p class="font-weight-bold" style="color:darkgreen;">Inicio</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h2" href="/perfil"><p class="font-weight-bold" style="color:darkgreen;">Información Personal</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h2" href="/animales_perfil"><p class="font-weight-bold" style="color:darkgreen;">Animales</p></a>
+      </li>
+    </ul>
+    <div class="container">
+        <div class='row'>
+            <div class='col-sm-12 text-center'>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                    <table id="myTable" class='table table-striped' style="background-color: #ddd;">
+                        <tr>
+                          <th class="text-center">ID</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Apodo</th>
+                            <th class="text-center">Descripcion</th>
+                            <th class="text-center">Familia</th>
+                            <th class="text-center">ID Empleado</th>
+                            <th class="text-center">ID Comida</th>
+                            <th class="text-center">Opciones</th>
+                        </tr>
+                        <% for(var i = 0; i < datos.length; i++){ %>
+                        <tr>
+                          <td class="text-center"><%= datos[i].id_animal %></td>
+                            <td class="text-center"><%= datos[i].nombre_animal %></td>
+                            <td class="text-center"><%= datos[i].apodo_animal %></td>
+                            <td class="text-center"><%= datos[i].descripcion_animal %></td>
+                            <td class="text-center"><%= datos[i].familia_animal %></td>
+                            <td class="text-center"><%= datos[i].id_empleado %></td>
+                            <td class="text-center"><%= datos[i].id_entrega %></td>
+                            <td class="text-center"><a href="/eliminar/<%= datos[i].id_animal %>"> Eliminar</a></td>
+                            </tr> 
+                        <% } %>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row row-cols-2">
+        <div class="col">
+          <form action="/agregar" method="POST" style="background-color:darkcyan;">
+            <div class="form-group">
+              <p class="text-center" style="color: white;">Agregar</p>
+              <label style="color: white;">ID Animal</label>
+              <input type="text" name="id_animal" class="form-control" placeholder="Id Animal">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">Nombre Animal</label>
+              <input type="text" name="nombre_animal" class="form-control" placeholder="Nombre Animal">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">Apodo Animal</label>
+              <input type="text" name="apodo_animal" class="form-control" placeholder="Apodo Animal">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">Descripcion Animal</label>
+              <input type="text" name="descripcion_animal" class="form-control" placeholder="Descripcion Animal">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">Familia Animal</label>
+              <input type="text" name="familia_animal" class="form-control" placeholder="Familia Animal">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">ID Empleado</label>
+              <input type="text" name="id_empleado" class="form-control" placeholder="ID Empleado">
+            </div>
+            <div class="form-group">
+              <label style="color: white;">ID Entrega</label>
+              <input type="text" name="id_entrega" class="form-control" placeholder="ID Entrega">
+            </div>
+            <input style="background-color: brown; color: white; text-align: center;" type="submit" class="btn">
+          </form>
+        </div>
+        <div class="col">
+          <form action="/editar" method="POST" style="background-color: #ddd;">
+            <div class="form-group">
+              <p class="text-center">Editar</p>
+              <label>ID Animal</label>
+              <input type="text" name="id_animal" class="form-control" placeholder="Id Animal">
+            </div>
+            <div class="form-group">
+              <label>Nombre Animal</label>
+              <input type="text" name="nombre_animal" class="form-control" placeholder="Nombre Animal">
+            </div>
+            <div class="form-group">
+              <label>Apodo Animal</label>
+              <input type="text" name="apodo_animal" class="form-control" placeholder="Apodo Animal">
+            </div>
+            <div class="form-group">
+              <label>Descripcion Animal</label>
+              <input type="text" name="descripcion_animal" class="form-control" placeholder="Descripcion Animal">
+            </div>
+            <div class="form-group">
+              <label>Familia Animal</label>
+              <input type="text" name="familia_animal" class="form-control" placeholder="Familia Animal">
+            </div>
+            <div class="form-group">
+              <label>ID Empleado</label>
+              <input type="text" name="id_empleado" class="form-control" placeholder="ID Empleado">
+            </div>
+            <div class="form-group">
+              <label>ID Entrega</label>
+              <input type="text" name="id_entrega" class="form-control" placeholder="ID Entrega">
+            </div>
+            <input type="submit" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </div>
+    <hr>
+   </div>
+</body>
+</html>

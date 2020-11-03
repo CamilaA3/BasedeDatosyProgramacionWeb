@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animales</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+      #myInput {
+        background-image: url("");
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+      
+      #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+      }
+      
+      #myTable th, #myTable td {
+        text-align: left;
+        padding: 12px;
+      }
+      
+      #myTable tr {
+        border-bottom: 1px solid #ddd;
+      }
+      
+      #myTable tr.header, #myTable tr:hover {
+        background-color: #f1f1f1;
+      }
+      </style>
+</head>
+<body style="background-image: url(https://static.vecteezy.com/system/resources/previews/000/122/923/original/jungle-landscape-with-liana-hanging-vector.jpg); background-repeat: no-repeat; background-size: cover;">
+  <hr>
+  <div class="container" style="background-image:url(https://thumbs.dreamstime.com/b/papel-viejo-del-grunge-para-el-mapa-o-el-vintage-del-tesoro-45116915.jpg);">
+    <h1 class="text-center display-1" style="color:darkgreen; font-family: Arial, Helvetica, sans-serif;">Zoologico</h1>
+    <a href="/login" class="btn btn-link" role="button"><h2 class="font-weight-bold">Iniciar Sesion</h2></a>
+    <hr>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active h2" href="/"><p class="font-weight-bold" style="color:darkgreen;">Inicio</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h2" href="/ejemplo"><p class="font-weight-bold" style="color:darkgreen;">Animales</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h2" href="/horario"><p class="font-weight-bold" style="color:darkgreen;">Horarios</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link h2" href="/contacto"><p class="font-weight-bold" style="color:darkgreen;">Contactos</p></a>
+      </li>
+    </ul>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button type="button" class="btn btn-primary">Primary</button>
+              </div>
+              <div class="col text-center">
+                <button type="button" class="btn btn-primary">Primary</button>
+              </div>
+              <div class="col text-center">
+                <input type="text" id="myInput" onkeyup="myFunction()" value="Mamifero">
+              </div>
+        </div>
+    </div>
+    <hr>
+     <div class="container">
+    <div class='row'>
+      <div class='col text-center'>
+          <table id="myTable" class='table table-striped' style="background-color: #ddd;">
+              <tr>
+                  <th>Nombre</th>
+                  <th>Apodo</th>
+                  <th>Descripcion</th>
+                  <th>Familia</th>
+              </tr>
+              <% for(var i = 0; i < datos.length; i++){ %>
+                <tr>
+                    <td><%= datos[i].nombre_animal %></td>
+                    <td><%= datos[i].apodo_animal %></td>
+                    <td><%= datos[i].descripcion_animal %></td>
+                    <td><%= datos[i].familia_animal %></td>
+                  </tr> 
+              <% } %>
+          </table>
+      </div>
+    </div>
+    </div>
+<script>
+    function myFunction(){
+        if(document.getElementById("myInput")){
+            table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[3];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }            
+        }
+    }
+</script>
+</html>
